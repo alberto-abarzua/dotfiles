@@ -48,12 +48,14 @@ local plugins = {
   },
   {
     "github/copilot.vim",
-    lazy = false,
-    config = function()
-      vim.api.nvim_set_keymap('i', '<C-J>', [[copilot#Accept("\<CR>")]], {silent = true, expr = true})
-      vim.g.copilot_no_tab_map = true
-    end,
-  },
+     lazy = false,
+     priority = 1000,
+     config = function()
+        vim.cmd('imap <silent><script><expr> <C-j> copilot#Accept("\\<CR>")')
+        vim.g.copilot_no_tab_map = true
+        vim.g.copilot_assume_mapped = true
+      end,
+   },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",

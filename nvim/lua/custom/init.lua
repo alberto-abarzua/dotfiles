@@ -5,4 +5,3 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
-print("Hello")
