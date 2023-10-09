@@ -1,14 +1,14 @@
 -- Bootstrap Packer
-require('bootstrap')
+require("bootstrap")
 
 -- Load Plugins
-require('plugins')
+require("plugins")
 
 -- Load Colors
-require('colors')
+require("colors")
 
 -- Load Mappings
-require('mappings')
+require("mappings")
 
 -- Load Settings
-require('settings')
+require("settings")
