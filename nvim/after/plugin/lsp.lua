@@ -12,6 +12,7 @@ lsp.ensure_installed({
 	"yamlls",
 	"jsonls",
 	"cssls",
+	"tailwindcss",
 })
 lsp.nvim_workspace()
 
