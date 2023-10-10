@@ -1,0 +1,45 @@
+[colors.bright]
+black = "0x4d4d4d"
+blue = "0x57c7ff"
+cyan = "0x9aedfe"
+green = "0x5af78e"
+magenta = "0xff92d0"
+red = "0xff6e67"
+white = "0xe6e6e6"
+yellow = "0xf4f99d"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x4590f9"
+cyan = "0x8be9fd"
+green = "0x50fa7b"
+magenta = "0xff79c6"
+red = "0xff5555"
+white = "0xbfbfbf"
+yellow = "0xf1faee"
+
+[colors.primary]
+background = "0x3a3a3a"
+foreground = "0xeaeaea"
+
+[cursor]
+style = "Underline"
+
+[window]
+opacity = 0.95
+[font]
+size = 13.0
+
+[font.normal]
+family = "DejaVuSansM Nerd Font"
+style = "Book"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"

@@ -49,6 +49,7 @@ return require("packer").startup(function(use)
 
 	use("b3nj5m1n/kommentary")
 	use("dense-analysis/ale")
+	use("christoomey/vim-tmux-navigator")
 
 	if packer_bootstrap then
 		require("packer").sync()
