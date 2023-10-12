@@ -1,0 +1,47 @@
+colors:
+  bright:
+    black: "0x151515"
+    blue: "0x6fc2ef"
+    cyan: "0x7fccca"
+    green: "0x99cc99"
+    magenta: "0xd197d9"
+    red: "0xf66666"
+    white: "0xf2f2f2"
+    yellow: "0xffcc66"
+  normal:
+    black: "0x1e1e1e"
+    blue: "0x81a2be"
+    cyan: "0x66cccc"
+    green: "0x8ec43d"
+    magenta: "0xb294bb"
+    red: "0xc82829"
+    white: "0xc5c8c6"
+    yellow: "0xf0c674"
+  primary:
+    background: "0x2e2e31"
+    foreground: "0xd2d6d6"
+
+cursor:
+  style: "Underline"
+
+window:
+  opacity: 0.90
+  dimensions:
+    columns: 100
+    lines: 30
+
+font:
+  size: 13.0
+  normal:
+    family: "DejaVuSansM Nerd Font"
+    style: "Regular"
+
+keyboard:
+  bindings:
+    - action: "Paste"
+      key: "V"
+      mods: "Control|Shift"
+    - action: "Copy"
+      key: "C"
+      mods: "Control|Shift"
+

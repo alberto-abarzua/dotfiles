@@ -13,7 +13,6 @@ plugins=(git)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $ZSH/oh-my-zsh.sh
-source /home/albertoa/scripts/open_apps_completion.sh
 
 # Python
 alias python="python3"
