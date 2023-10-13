@@ -20,3 +20,6 @@ vim.o.clipboard = "unnamedplus"
 
 -- General
 vim.o.autoread = true
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.hlsearch = true

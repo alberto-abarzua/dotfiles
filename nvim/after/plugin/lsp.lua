@@ -2,6 +2,8 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+vim.lsp.set_log_level("debug")
+
 lsp.ensure_installed({
 	"tsserver",
 	"rust_analyzer",
@@ -33,7 +35,7 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-	suggest_lsp_servers = false,
+	suggest_lsp_servers = true,
 	sign_icons = {
 		error = "E",
 		warn = "W",
