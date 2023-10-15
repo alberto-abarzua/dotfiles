@@ -7,6 +7,7 @@ fi
 # Variables
 export PATH="$PATH:$HOME/bin"
 export EDITOR="nvim"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Plugin Manager Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -37,6 +38,13 @@ alias k='kubectl'
 kset(){
     kubectl config set-context --current --namespace="$@"
 }
+
+# General
+alias ll="ls -l --color=auto"
+alias la="ls -a --color=auto"
+alias lla="ls -la --color=auto"
+alias l="ls -CF --color=auto"
+alias ls="ls --color=auto"
 
 # Docker
 alias dcr="docker compose run --rm"
