@@ -72,6 +72,9 @@ require("nvim-tree").setup({
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
+vim.g.nvim_tree_show_hidden = 1
+vim.g.nvim_tree_ignore = {}
+
 vim.cmd([[
   autocmd TabLeave * NvimTreeClose
 ]])

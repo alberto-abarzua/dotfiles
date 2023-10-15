@@ -1,18 +1,31 @@
-# Variables
-export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:$HOME/bin"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 
-# Theme
-ZSH_THEME="bira"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Variables
+export PATH="$PATH:$HOME/bin"
+export EDITOR="nvim"
+
+# Plugin Manager Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Plugins
-plugins=(git)
+zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 
-# Auto Suggestions
-# git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Theme
+zinit light romkatv/powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-source $ZSH/oh-my-zsh.sh
 
 # Python
 alias python="python3"
@@ -40,6 +53,14 @@ fi
 alias vim="nvim"
 alias vi="nvim"
 
+# tmux
+alias tka="tmux kill-session -a"
+alias tks="tmux kill-session -t"
+alias tksa="tmux kill-server"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
+alias tas="tmux attach -s"
+alias tns="tmux new -s"
+
 # Neofetch
 neofetch
-
