@@ -7,7 +7,7 @@ return require("packer").startup(function(use)
 		tag = "0.1.3",
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-	use("joshdick/onedark.vim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("itchyny/lightline.vim")
 	use({
 		"nvim-treesitter/nvim-treesitter",

@@ -6,10 +6,9 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 -- Map <C-p> to git_files
 vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
--- Map <leader>ps to grep_string with input
-vim.keymap.set("n", "<leader>gs", function()
+-- Map <leader>gt to grep_string with input
+vim.keymap.set("n", "<leader>gt", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, {})
-
 -- Map <leader>vh to help_tags
 vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
