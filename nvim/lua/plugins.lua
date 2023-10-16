@@ -10,13 +10,14 @@ return require("packer").startup(function(use)
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("itchyny/lightline.vim")
 	use({
-		"nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter/nvrequire('leap').add_default_mappings() im-treesitter",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
 	})
 	use("mbbill/undotree")
+	use("ggandor/leap.nvim")
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
