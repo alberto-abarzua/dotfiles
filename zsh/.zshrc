@@ -39,12 +39,15 @@ kset(){
     kubectl config set-context --current --namespace="$@"
 }
 
-# General
+# General -- ls 
 alias ll="ls -l --color=auto"
 alias la="ls -a --color=auto"
 alias lla="ls -la --color=auto"
 alias l="ls -CF --color=auto"
 alias ls="ls --color=auto"
+
+# General -- clear
+alias cl="clear"
 
 # Docker
 alias dcr="docker compose run --rm"

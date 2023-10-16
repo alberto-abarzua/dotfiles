@@ -16,6 +16,7 @@ return require("packer").startup(function(use)
 			ts_update()
 		end,
 	})
+	use("mbbill/undotree")
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
