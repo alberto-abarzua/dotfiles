@@ -45,6 +45,8 @@ alias la="ls -a --color=auto"
 alias lla="ls -la --color=auto"
 alias l="ls -CF --color=auto"
 alias ls="ls --color=auto"
+# clear .zsh_history
+alias clh="cat /dev/null > ~/.zsh_history && history -c && exit"
 
 # General -- clear
 alias cl="clear"
