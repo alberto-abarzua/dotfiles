@@ -10,10 +10,23 @@ return require("packer").startup(function(use)
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("itchyny/lightline.vim")
 	use({
-		"nvim-treesitter/nvrequire('leap').add_default_mappings() im-treesitter",
+		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
+		end,
+	})
+	use("windwp/nvim-ts-autotag")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
 		end,
 	})
 	use("mbbill/undotree")
