@@ -74,7 +74,7 @@ alias tl="tmux ls"
 alias tas="tmux attach -a"
 alias tns="tmux new -s"
 # print all commands (cheatsheet)
-alias tch="echo ' tka = tmux kill-session -a \n tks = tmux kill-session -t \n tksa = tmux kill-server \n ta = tmux attach -t \n tl = tmux ls \n tas = tmux attach -s \n tns = tmux new -s'"
+alias tch="echo ' tka = tmux kill-session -a \n tks = tmux kill-session -t \n tksa = tmux kill-server \n ta = tmux attach -t \n tl = tmux ls  \n tns = tmux new -s'"
 
 # Neofetch
 neofetch
