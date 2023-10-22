@@ -83,3 +83,4 @@ cmp.setup({
 	}),
 })
 vim.lsp.set_log_level("trace")
+require("lspconfig").tailwindcss.setup({})
