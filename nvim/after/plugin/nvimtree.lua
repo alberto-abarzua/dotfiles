@@ -69,10 +69,8 @@ require("nvim-tree").setup({
 })
 
 -- Custom keymaps for toggling and focusing
--- vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
 vim.g.nvim_tree_show_hidden = 1
 vim.g.nvim_tree_ignore = {}

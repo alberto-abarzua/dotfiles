@@ -62,7 +62,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("b3nj5m1n/kommentary")
+	-- use({
+	-- 	"numToStr/Comment.nvim",
+	-- 	config = function()
+	-- 		require("Comment").setup()
+	-- 	end,
+	-- })
+	use("numToStr/Comment.nvim")
+
 	use("dense-analysis/ale")
 	use("christoomey/vim-tmux-navigator")
 	use("theprimeagen/harpoon")
