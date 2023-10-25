@@ -61,6 +61,11 @@ alias cl="clear"
 function g() {
     cd ~/git-local/"$1" || exit
 }
+function gn() {
+    cd ~/git-local/"$1" || exit
+    nvim .
+}
+
 _g() {
   local -a subdirs
   subdirs=( $(cd ~/git-local && echo *) )
@@ -68,6 +73,7 @@ _g() {
 }
 
 compdef _g g
+compdef _g gn
 
 # Docker
 alias dcr="docker compose run --rm"
@@ -81,8 +87,9 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # NeoVim
-alias vim="nvim"
-alias vi="nvim"
+alias vim="nvim ."
+alias vi="nvim ."
+alias nv="nvim ."
 
 # tmux
 alias tka="tmux kill-session -a"
