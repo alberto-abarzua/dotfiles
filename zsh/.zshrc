@@ -4,6 +4,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Init completion system
+autoload -Uz compinit && compinit
+
 # Variables
 export PATH="$PATH:$HOME/bin"
 export EDITOR="nvim"
@@ -53,6 +56,18 @@ alias clh="cat /dev/null > ~/.zsh_history"
 
 # General -- clear
 alias cl="clear"
+
+# Go to git repo fast
+function g() {
+    cd ~/git-local/"$1" || exit
+}
+_g() {
+  local -a subdirs
+  subdirs=( $(cd ~/git-local && echo *) )
+  _describe 'subdirectories' subdirs
+}
+
+compdef _g g
 
 # Docker
 alias dcr="docker compose run --rm"

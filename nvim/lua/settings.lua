@@ -23,3 +23,7 @@ vim.o.autoread = true
 vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.hlsearch = true
+
+-- Indent and stay in visual mode
+vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
