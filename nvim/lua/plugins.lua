@@ -1,40 +1,37 @@
-local packer_bootstrap = require("bootstrap")()
+require("lazy").setup({
 
-return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-	use({
+	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.3",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("itchyny/lightline.vim")
-	use({
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false },
+
+	{ "itchyny/lightline.vim", lazy = false },
+
+	{
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-	})
-	use("windwp/nvim-ts-autotag")
-	use({
+		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+		build = ":TSUpdate",
+	},
+
+	{ "windwp/nvim-ts-autotag" },
+	{
 		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	})
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
-		end,
-	})
-	use("mbbill/undotree")
-	use("ggandor/leap.nvim")
-	use({
+		event = "InsertEnter",
+		opts = {},
+	},
+	{ "mbbill/undotree" },
+
+	{ "tpope/vim-surround" },
+
+	{ "ggandor/leap.nvim" },
+
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
-		requires = {
+		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			{ "williamboman/mason.nvim" },
@@ -52,29 +49,19 @@ return require("packer").startup(function(use)
 			{ "L3MON4D3/LuaSnip" },
 			{ "rafamadriz/friendly-snippets" },
 		},
-	})
-	use("github/copilot.vim")
-	use({
+	},
+
+	{ "github/copilot.vim", lazy = false },
+
+	{
 		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("nvim-tree").setup({})
-		end,
-	})
+		dependencies = { "kyazdani42/nvim-web-devicons" },
+		opts = {},
+	},
 
-	-- use({
-	-- 	"numToStr/Comment.nvim",
-	-- 	config = function()
-	-- 		require("Comment").setup()
-	-- 	end,
-	-- })
-	use("numToStr/Comment.nvim")
+	{ "numToStr/Comment.nvim" },
 
-	use("dense-analysis/ale")
-	use("christoomey/vim-tmux-navigator")
-	use("theprimeagen/harpoon")
+	{ "dense-analysis/ale" },
 
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+	{ "christoomey/vim-tmux-navigator", lazy = false },
+})
