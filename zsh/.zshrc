@@ -9,6 +9,10 @@ export PATH="$PATH:$HOME/bin"
 export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+if [ -d "$HOME/.npm-global" ]; then
+    export PATH=~/.npm-global/bin:$PATH
+fi
+
 # Plugin Manager Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -75,6 +79,11 @@ alias tas="tmux attach -a"
 alias tns="tmux new -s"
 # print all commands (cheatsheet)
 alias tch="echo ' tka = tmux kill-session -a \n tks = tmux kill-session -t \n tksa = tmux kill-server \n ta = tmux attach -t \n tl = tmux ls  \n tns = tmux new -s'"
+
+# Setting repeat rate, (first check that xset is installed)
+if [ -x "$(command -v xset)" ]; then
+    xset r rate 300 45
+fi
 
 # Neofetch
 neofetch

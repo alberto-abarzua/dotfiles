@@ -36,6 +36,15 @@ vim.g.ale_fixers = {
 	["css"] = { "prettier" }, -- Assuming 'prettier' is the formatter for CSS
 	["lua"] = { "stylua" }, -- Assuming 'stylua' is the formatter for Lua
 }
+-- Make autopep8 use 120 characters per line
+vim.g.ale_python_autopep8_options = "--max-line-length 120"
+-- Make ale use prettier global for formatting
+
+vim.g.ale_javascript_prettier_executable = "prettier"
+vim.g.ale_typescript_prettier_executable = "prettier"
+vim.g.ale_typescriptreact_prettier_executable = "prettier"
+vim.g.ale_javascriptreact_prettier_executable = "prettier"
+
 -- Optional: Use ALE with specific file types
 vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
 vim.g.ale_fix_on_save = 1 -- Automatically fix on save
