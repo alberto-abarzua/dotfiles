@@ -68,7 +68,6 @@ require("nvim-tree").setup({
 	on_attach = custom_nvimtree_attach,
 })
 
-print("nvim-tree.lua: Setting keymaps")
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 

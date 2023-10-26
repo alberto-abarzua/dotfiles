@@ -75,12 +75,25 @@ require("lazy").setup({
 			{ "williamboman/mason-lspconfig.nvim" },
 
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
+			{
+				"hrsh7th/nvim-cmp",
+				config = function()
+					return require("plugins.configs.cmp")
+				end,
+			},
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
 			{ "saadparwaiz1/cmp_luasnip" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
+			{
+				"roobert/tailwindcss-colorizer-cmp.nvim",
+				config = function()
+					require("tailwindcss-colorizer-cmp").setup({
+						color_square_width = 2,
+					})
+				end,
+			},
 
 			-- Snippets
 			{ "L3MON4D3/LuaSnip" },
