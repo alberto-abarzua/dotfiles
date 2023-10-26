@@ -1,10 +1,11 @@
 require("catppuccin").setup({
-	transparent_background = true,
+	transparent_background = false,
 	term_colors = false,
 	dim_inactive = {
-		enabled = false,
+		enabled = true,
 		shade = "dark",
-		percentage = 0.15,
+		percentage = 0.4,
+		transparent_background = true,
 	},
 	styles = {
 		comments = { "italic" },
@@ -21,7 +22,6 @@ require("catppuccin").setup({
 		operators = {},
 	},
 	integrations = {
-		-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
 		leap = true,
 		cmp = true,
 		treesitter = true,
@@ -39,8 +39,6 @@ if vim.fn.has("termguicolors") == 1 then
 end
 
 vim.cmd([[colorscheme catppuccin-macchiato]])
+
 vim.g.lightline = { colorscheme = "catppuccin" }
 vim.g.airline_theme = "catppuccin"
-
--- Make Transparent
-vim.cmd([[highlight Normal ctermbg=none]])

@@ -22,6 +22,10 @@ require("lazy").setup({
 	{
 		"itchyny/lightline.vim",
 		lazy = false,
+		config = function()
+			vim.g.lightline = { colorscheme = "catppuccin" }
+			vim.g.airline_theme = "catppuccin"
+		end,
 	},
 
 	{
