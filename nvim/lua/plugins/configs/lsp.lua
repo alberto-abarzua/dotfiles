@@ -82,5 +82,4 @@ cmp.setup({
 		["<S-Tab>"] = nil,
 	}),
 })
-vim.lsp.set_log_level("trace")
 require("lspconfig").tailwindcss.setup({})
