@@ -12,7 +12,8 @@ USER_HOME = os.environ.get("HOME", None)
 TO_CONFIG_HOME = [
     CURRENT_FILE_DIR / "nvim",
     CURRENT_FILE_DIR / "alacritty",
-    CURRENT_FILE_DIR / "neofetch"
+    CURRENT_FILE_DIR / "neofetch",
+    CURRENT_FILE_DIR / "kitty",
 ]
 
 TO_HOME = [
