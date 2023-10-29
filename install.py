@@ -40,8 +40,8 @@ def main(force_install):
             print(f"Removing {target}...")
             os.system(f"rm -rf {target}")
 
-        print(f'Symbolic linking {path} to {target}...')
-        exit_code = os.system(f"ln -s {path} {target}")
+        print(f'Symbolic linking {path} to {USER_XDG_CONFIG_HOME}...')
+        exit_code = os.system(f"ln -s {path} {USER_XDG_CONFIG_HOME}")
         if exit_code != 0:
             failed_files.append(target)
 
@@ -51,8 +51,8 @@ def main(force_install):
             if force_install and target.exists():
                 print(f"Removing {target}...")
                 os.system(f"rm -rf {target}")
-            print(f'Symbolic linking {file} to {target}...')
-            exit_code = os.system(f"ln -s {file} {target}")
+            print(f'Symbolic linking {file} to {USER_HOME_PATH}...')
+            exit_code = os.system(f"ln -s {file} {USER_HOME_PATH}")
             if exit_code != 0:
                 failed_files.append(target)
     if len(failed_files) == 0:
