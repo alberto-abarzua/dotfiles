@@ -37,7 +37,10 @@ def main(force_install):
     for path in TO_CONFIG_HOME:
         target = USER_XDG_CONFIG_HOME_PATH / path.name
         if force_install and target.exists():
+            print(f"Removing {target}...")
             os.system(f"rm -rf {target}")
+
+        print(f'Symbolic linking {path} to {USER_XDG_CONFIG_HOME}...')
         exit_code = os.system(f"ln -s {path} {USER_XDG_CONFIG_HOME}")
         if exit_code != 0:
             failed_files.append(target)
@@ -46,16 +49,20 @@ def main(force_install):
         for file in path.iterdir():
             target = USER_HOME_PATH / file.name
             if force_install and target.exists():
+                print(f"Removing {target}...")
                 os.system(f"rm -rf {target}")
+            print(f'Symbolic linking {file} to {USER_HOME_PATH}...')
             exit_code = os.system(f"ln -s {file} {USER_HOME_PATH}")
             if exit_code != 0:
                 failed_files.append(target)
-
-    print("Some files failed to install:")
-    for file in failed_files:
-        print(file)
-    print("To remove all failed files run:\n")
-    print("rm -r " + " ".join([str(file) for file in failed_files]))
+    if len(failed_files) == 0:
+        print("Successfully installed dotfiles!")
+    else:
+        print("Some files failed to install:")
+        for file in failed_files:
+            print(file)
+        print("To remove all failed files run:\n")
+        print("rm -r " + " ".join([str(file) for file in failed_files]))
 
 
 if __name__ == '__main__':
