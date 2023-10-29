@@ -1,11 +1,10 @@
 require("catppuccin").setup({
-	transparent_background = false,
+	transparent_background = true,
 	term_colors = false,
 	dim_inactive = {
-		enabled = true,
+		enabled = false,
 		shade = "dark",
 		percentage = 0.4,
-		transparent_background = true,
 	},
 	styles = {
 		comments = { "italic" },

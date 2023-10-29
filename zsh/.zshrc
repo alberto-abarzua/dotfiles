@@ -11,6 +11,8 @@ autoload -Uz compinit && compinit
 export PATH="$PATH:$HOME/bin"
 export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
+# export TERM=xterm-256color
+export TERM=xterm-kitty
 
 if [ -d "$HOME/.npm-global" ]; then
     export PATH=~/.npm-global/bin:$PATH
@@ -109,3 +111,7 @@ fi
 
 # Neofetch
 neofetch
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
