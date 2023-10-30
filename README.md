@@ -1,10 +1,8 @@
 # My Dotfiles
 
----
-
 <figure>
-    <img src="./imgs/screen.png" width="80%"">
-    <figcaption style="text-align: center;">ESP-32 placa de desarrollo</figcaption>
+    <img src="./imgs/screen.png" width="80%" style="margin: 0 auto;">
+    <figcaption style="text-align: center;">NeoVim, tmux, Kitty</figcaption>
 </figure>
 
 ## Dependencies
