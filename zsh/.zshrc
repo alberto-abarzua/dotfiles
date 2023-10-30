@@ -48,12 +48,40 @@ kset(){
     kubectl config set-context --current --namespace="$@"
 }
 
-# General -- ls 
-alias ll="ls -l --color=auto"
+# tmux
+alias tka="tmux kill-session -a"
+alias tks="tmux kill-session -t"
+alias tksa="tmux kill-server"
+alias ta="tmux attach -t"
+alias tl="tmux ls"
+alias tas="tmux attach -a"
+alias tns="tmux new -s"
+
+tn() {
+  SESSION_NAME=$(basename $(pwd))
+  COMMAND=$1  # Optional command to run
+  tmux has-session -t $SESSION_NAME 2>/dev/null
+
+  if [ $? != 0 ]; then
+    tmux new-session -s $SESSION_NAME -d
+
+    # If a command was provided, run it in the new session
+    if [ ! -z "$COMMAND" ]; then
+      tmux send-keys -t $SESSION_NAME "$COMMAND" C-m
+    fi
+  fi
+
+  tmux attach -t $SESSION_NAME
+}
+
+
+# General -- ls  TODO: replace with exa
+alias ll="ls -la --color=auto"
 alias la="ls -a --color=auto"
 alias lla="ls -la --color=auto"
 alias l="ls -CF --color=auto"
 alias ls="ls --color=auto"
+
 alias clh="cat /dev/null > ~/.zsh_history"
 
 # General -- clear and neofetch
@@ -65,7 +93,7 @@ function g() {
 }
 function gn() {
     cd ~/git-local/"$1" || exit
-    nvim .
+    tn 'nvim .'
 }
 
 _g() {
@@ -94,14 +122,6 @@ alias vim="nvim ."
 alias vi="nvim ."
 alias nv="nvim ."
 
-# tmux
-alias tka="tmux kill-session -a"
-alias tks="tmux kill-session -t"
-alias tksa="tmux kill-server"
-alias ta="tmux attach -t"
-alias tl="tmux ls"
-alias tas="tmux attach -a"
-alias tns="tmux new -s"
 # print all commands (cheatsheet)
 alias tch="echo ' tka = tmux kill-session -a \n tks = tmux kill-session -t \n tksa = tmux kill-server \n ta = tmux attach -t \n tl = tmux ls  \n tns = tmux new -s'"
 
