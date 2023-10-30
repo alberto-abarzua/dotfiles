@@ -56,8 +56,8 @@ alias l="ls -CF --color=auto"
 alias ls="ls --color=auto"
 alias clh="cat /dev/null > ~/.zsh_history"
 
-# General -- clear
-alias cl="clear"
+# General -- clear and neofetch
+alias cl="clear && neofetch"
 
 # Go to git repo fast
 function g() {
@@ -82,6 +82,7 @@ alias dcr="docker compose run --rm"
 alias dcu="docker compose up"
 alias dcb="docker compose build"
 alias dcd="docker compose down --remove-orphans"
+alias dce="docker compose exec"
 
 # Check for custom conf in .zshrc.local
 if [ -f ~/.zshrc.local ]; then
@@ -115,3 +116,4 @@ neofetch
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
