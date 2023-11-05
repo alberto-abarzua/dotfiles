@@ -85,7 +85,7 @@ alias ls="ls --color=auto"
 alias clh="cat /dev/null > ~/.zsh_history"
 
 # General -- clear and neofetch
-alias claer="clear && neofetch"
+alias clear="clear && neofetch"
 alias cl="clear && neofetch"
 
 # Go to git repo fast
