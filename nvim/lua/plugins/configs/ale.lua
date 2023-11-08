@@ -13,9 +13,9 @@ vim.g.ale_linters = {
 	["c"] = { "clangd" },
 	["cpp"] = { "clangd" },
 	["bash"] = { "bashls" },
-	["dockerfile"] = { "dockerls" },
-	["yaml"] = { "yamlls" },
-	["json"] = { "jsonls" },
+	["dockerfile"] = { "hadolint" },
+	["yaml"] = { "yamllint" },
+	["json"] = { "jsonlint" },
 	["css"] = { "cssls" },
 	["lua"] = { "stylua" },
 }
@@ -25,30 +25,20 @@ vim.g.ale_fixers = {
 	["typescript"] = { "prettier" },
 	["typescriptreact"] = { "prettier" },
 	["javascriptreact"] = { "prettier" },
-	["rust"] = { "rustfmt" }, -- Assuming 'rustfmt' is the formatter for Rust
-	["python"] = { "autopep8" }, -- Assuming 'autopep8' is the formatter for Python
-	["c"] = { "clang-format" }, -- Assuming 'clang-format' is the formatter for C
-	["cpp"] = { "clang-format" }, -- Assuming 'clang-format' is the formatter for C++
-	["bash"] = { "shfmt" }, -- Assuming 'shfmt' is the formatter for Bash
-	["dockerfile"] = { "dockerfilelint" }, -- Assuming 'dockerfilelint' is the formatter for Dockerfile
-	["yaml"] = { "prettier" }, -- Assuming 'prettier' is the formatter for YAML
-	["json"] = { "prettier" }, -- Assuming 'prettier' is the formatter for JSON
-	["css"] = { "prettier" }, -- Assuming 'prettier' is the formatter for CSS
-	["lua"] = { "stylua" }, -- Assuming 'stylua' is the formatter for Lua
+	["rust"] = { "rustfmt" },
+	["python"] = { "autopep8" },
+	["c"] = { "clang-format" },
+	["cpp"] = { "clang-format" },
+	["bash"] = { "shfmt" },
+	["yaml"] = { "prettier" },
+	["json"] = { "prettier" },
+	["css"] = { "prettier" },
+	["lua"] = { "stylua" },
+	["yaml"] = { "yamllint" },
+	["markdown"] = { "prettier" },
 }
 -- Make autopep8 use 120 characters per line
 vim.g.ale_python_autopep8_options = "--max-line-length 120"
--- Make ale use prettier global for formatting
-
--- vim.g.ale_javascript_prettier_executable = "prettier"
--- vim.g.ale_typescript_prettier_executable = "prettier"
--- vim.g.ale_typescriptreact_prettier_executable = "prettier"
--- vim.g.ale_javascriptreact_prettier_executable = "prettier"
---
--- vim.g.ale_javascript_eslint_executable = "eslint"
--- vim.g.ale_tyescript_eslint_executable = "eslint"
--- vim.g.ale_tyescriptreact_eslint_executable = "eslint"
--- vim.g.ale_javascriptreact_eslint_executable = "eslint"
 
 -- Optional: Use ALE with specific file types
 vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
