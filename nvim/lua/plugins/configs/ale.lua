@@ -34,7 +34,6 @@ vim.g.ale_fixers = {
 	["json"] = { "prettier" },
 	["css"] = { "prettier" },
 	["lua"] = { "stylua" },
-	["yaml"] = { "yamllint" },
 	["markdown"] = { "prettier" },
 }
 -- Make autopep8 use 120 characters per line
