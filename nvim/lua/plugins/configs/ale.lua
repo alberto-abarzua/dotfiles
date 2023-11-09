@@ -41,7 +41,10 @@ vim.g.ale_python_autopep8_options = "--max-line-length 120"
 
 -- Optional: Use ALE with specific file types
 vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
-vim.g.ale_fix_on_save = 1 -- Automatically fix on save
+
+--- map fix to leader fa
+
+vim.api.nvim_set_keymap("n", "<leader>fa", "<cmd>ALEFix<CR>", { noremap = true, silent = true })
 
 -- Ensure ALE doesn't conflict with your other plugins
 vim.g.ale_disable_lsp = 1
