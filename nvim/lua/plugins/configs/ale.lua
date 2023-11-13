@@ -44,7 +44,7 @@ vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
 
 --- map fix to leader fa
 
-vim.api.nvim_set_keymap("n", "<leader>fa", "<cmd>ALEFix<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>ALEFix<CR>", { noremap = true, silent = true })
 
 -- Ensure ALE doesn't conflict with your other plugins
 vim.g.ale_disable_lsp = 1
