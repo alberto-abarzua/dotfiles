@@ -27,3 +27,11 @@ vim.o.hlsearch = true
 -- Indent and stay in visual mode
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
+
+
+vim.cmd [[
+augroup FileTypeTypst
+    autocmd!
+    autocmd BufRead,BufNewFile *.typ setfiletype typst
+augroup END
+]]
