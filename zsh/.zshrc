@@ -119,9 +119,9 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # NeoVim
-alias vim="nvim ."
-alias vi="nvim ."
-alias nv="nvim ."
+alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"
 
 # print all commands (cheatsheet)
 alias tch="echo ' tka = tmux kill-session -a \n tks = tmux kill-session -t \n tksa = tmux kill-server \n ta = tmux attach -t \n tl = tmux ls  \n tns = tmux new -s'"
