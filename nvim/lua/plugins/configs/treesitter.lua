@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
-	ensure_installed = { "vimdoc", "javascript", "c", "lua", "cpp", "python", "html", "css" },
+	ensure_installed = { "vimdoc", "javascript", "c", "lua", "cpp", "python", "html", "css","typescript","javascript","tsx","graphql" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -8,7 +8,9 @@ require("nvim-treesitter.configs").setup({
 	-- Automatically install missing parsers when entering buffer
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = true,
-
+    indent = {
+        enable = true
+    },
 	autotag = {
 		enable = true,
 	},
@@ -21,5 +23,9 @@ require("nvim-treesitter.configs").setup({
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = true,
+
+         custom_captures = {
+              ["graphql"] = "TSXGraphQL", -- Highlight GraphQL inside TSX
+            },
 	},
 })

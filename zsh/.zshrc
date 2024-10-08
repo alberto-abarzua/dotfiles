@@ -8,6 +8,10 @@ export PATH="$HOME/.local/bin:$PATH"
 # Init completion system
 autoload -Uz compinit && compinit
 
+# Deno (JS/TS)
+export DENO_INSTALL="/home/alberto/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # Variables
 export PATH="$PATH:$HOME/bin"
 export EDITOR="nvim"
@@ -113,6 +117,18 @@ alias dcu="docker compose up"
 alias dcb="docker compose build"
 alias dcd="docker compose down --remove-orphans"
 alias dce="docker compose exec"
+
+
+# git
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gpl="git pull"
+alias gps="git push"
+alias gaa="git add -A"
 
 # Check for custom conf in .zshrc.local
 if [ -f ~/.zshrc.local ]; then

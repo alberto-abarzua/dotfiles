@@ -44,6 +44,7 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"tsserver",
+        "denols",
 		"rust_analyzer",
 		"pyright",
 		"clangd",
@@ -90,4 +91,16 @@ require'lspconfig'.typst_lsp.setup{
         serverPath = "", -- Normally, there is no need to uncomment it.
         filetypes = {"typst","typ"},
 	}
+}
+-- Config for Deno and TypeScript
+local nvim_lsp = require('lspconfig')
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false
 }
