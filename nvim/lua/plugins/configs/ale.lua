@@ -8,6 +8,8 @@ vim.g.ale_lint_on_save = 1
 vim.g.ale_linters = {
 	["javascript"] = { "tsserver" },
 	["typescript"] = { "tsserver" },
+    ["typescriptreact"] = { "tsserver" },
+    ["javascriptreact"] = { "tsserver" },
 	["rust"] = { "rust_analyzer" },
 	["python"] = { "pyright" },
 	["c"] = { "clangd" },
@@ -44,7 +46,7 @@ vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
 
 --- map fix to leader fa
 
-vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>ALEFix<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>ALEFix<CR>", { noremap = true })
 
 -- Ensure ALE doesn't conflict with your other plugins
 vim.g.ale_disable_lsp = 1
