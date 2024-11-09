@@ -1,4 +1,6 @@
 local lsp_zero = require("lsp-zero")
+
+
 lsp_zero.extend_lspconfig()
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -43,7 +45,7 @@ end)
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"tsserver",
+		"ts_ls",
         "denols",
 		"rust_analyzer",
 		"pyright",
@@ -94,13 +96,39 @@ require'lspconfig'.typst_lsp.setup{
 }
 -- Config for Deno and TypeScript
 local nvim_lsp = require('lspconfig')
+
+local function is_deno_project(path)
+  return nvim_lsp.util.root_pattern("deno.json", "deno.jsonc", "import_map.json")(path)
+end
 nvim_lsp.denols.setup {
   on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+  root_dir = is_deno_project,
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ["https://deno.land"] = true,
+          ["https://cdn.jsdelivr.net"] = true,
+          ["https://esm.sh"] = true
+        }
+      }
+    }
+  },
+  single_file_support = false
 }
 
-nvim_lsp.tsserver.setup {
+-- Setup ts_ls (TypeScript)
+nvim_lsp.ts_ls.setup {
   on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  root_dir = function(fname)
+    if is_deno_project(fname) then
+      return nil
+    end
+    -- Default TypeScript project detection
+    return nvim_lsp.util.root_pattern("package.json", "tsconfig.json")(fname)
+  end,
   single_file_support = false
 }

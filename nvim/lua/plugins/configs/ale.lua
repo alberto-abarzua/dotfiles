@@ -6,10 +6,10 @@ vim.g.ale_lint_on_save = 1
 
 -- Use LSP for linting and formatting
 vim.g.ale_linters = {
-	["javascript"] = { "tsserver" },
-	["typescript"] = { "tsserver" },
-    ["typescriptreact"] = { "tsserver" },
-    ["javascriptreact"] = { "tsserver" },
+	["javascript"] = { "ts_ls" },
+	["typescript"] = { "ts_ls" },
+    ["typescriptreact"] = { "ts_ls" },
+    ["javascriptreact"] = { "ts_ls" },
 	["rust"] = { "rust_analyzer" },
 	["python"] = { "pyright" },
 	["c"] = { "clangd" },
@@ -27,6 +27,7 @@ vim.g.ale_fixers = {
 	["typescript"] = { "prettier" },
 	["typescriptreact"] = { "prettier" },
 	["javascriptreact"] = { "prettier" },
+    ["deno"] = { "denols" },
 	["rust"] = { "rustfmt" },
 	["python"] = { "autopep8" },
 	["c"] = { "clang-format" },
