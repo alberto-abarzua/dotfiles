@@ -1,59 +1,73 @@
--- Enable ALE
+-- Enable ALE and basic settings
 vim.g.ale_enabled = 1
-
--- Set ALE to run on save
 vim.g.ale_lint_on_save = 1
 
--- Use LSP for linting and formatting
+
+-- Configure ALE linters
 vim.g.ale_linters = {
-	["javascript"] = { "ts_ls" },
-	["typescript"] = { "ts_ls" },
+    ["javascript"] = { "ts_ls" },
+    ["typescript"] = { "ts_ls" },
+    ["deno"] = { "ts_ls" },
     ["typescriptreact"] = { "ts_ls" },
     ["javascriptreact"] = { "ts_ls" },
-	["rust"] = { "rust_analyzer" },
-	["python"] = { "pyright" },
-	["c"] = { "clangd" },
-	["cpp"] = { "clangd" },
-	["bash"] = { "bashls" },
-	["dockerfile"] = { "hadolint" },
-	["yaml"] = { "yamllint" },
-	["json"] = { "jsonlint" },
-	["css"] = { "cssls" },
-	["lua"] = { "stylua" },
+    ["rust"] = { "rust_analyzer" },
+    ["python"] = { "pyright" },
+    ["c"] = { "clangd" },
+    ["cpp"] = { "clangd" },
+    ["bash"] = { "bashls" },
+    ["dockerfile"] = { "hadolint" },
+    ["yaml"] = { "yamllint" },
+    ["json"] = { "jsonlint" },
+    ["css"] = { "cssls" },
+    ["lua"] = { "stylua" },
 }
 
+-- Configure combined ALE fixers
 vim.g.ale_fixers = {
-	["javascript"] = { "prettier" },
-	["typescript"] = { "prettier" },
-	["typescriptreact"] = { "prettier" },
-	["javascriptreact"] = { "prettier" },
-    ["deno"] = { "denols" },
-	["rust"] = { "rustfmt" },
-	["python"] = { "autopep8" },
-	["c"] = { "clang-format" },
-	["cpp"] = { "clang-format" },
-	["bash"] = { "shfmt" },
-	["yaml"] = { "prettier" },
-	["json"] = { "prettier" },
-	["css"] = { "prettier" },
-	["lua"] = { "stylua" },
-	["markdown"] = { "prettier" },
+    ["javascript"] = { "prettier" },
+    ["typescript"] = { "prettier" },
+    ["typescriptreact"] = { "prettier" },
+    ["javascriptreact"] = { "prettier" },
+    ["deno"] = { "prettier" },  -- This will use deno fmt
+    ["rust"] = { "rustfmt" },
+    ["python"] = { "autopep8" },
+    ["c"] = { "clang-format" },
+    ["cpp"] = { "clang-format" },
+    ["bash"] = { "shfmt" },
+    ["yaml"] = { "prettier" },
+    ["json"] = { "prettier" },
+    ["css"] = { "prettier" },
+    ["lua"] = { "stylua" },
+    ["markdown"] = { "prettier" },
 }
--- Make autopep8 use 120 characters per line
+
+-- Configure Deno formatter options
+
+
+
+-- Other settings
 vim.g.ale_python_autopep8_options = "--max-line-length 120"
-
--- Optional: Use ALE with specific file types
-vim.g.ale_lint_on_text_changed = "never" -- Disable linting as you type
-
---- map fix to leader fa
-
+vim.g.ale_lint_on_text_changed = "never"
 vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>ALEFix<CR>", { noremap = true })
-
--- Ensure ALE doesn't conflict with your other plugins
 vim.g.ale_disable_lsp = 1
-
--- Additional ALE configuration can be added here as needed
-
--- Finally, add your language servers from lsp-zero
 vim.g.ale_completion_enabled = 1
 vim.g.ale_completion_delay = 1000
+vim.g.ale_javascript_prettier_use_global = 1
+vim.g.ale_javascript_prettier_executable = vim.fn.system('which prettier'):gsub('\n', '')
+
+-- Configure filetype detection for Deno
+vim.filetype.add({
+    pattern = {
+        ['deno.json'] = 'deno',
+        ['.*%.ts'] = {
+            priority = 10,
+            function(path, bufnr)
+                -- Check if deno.json exists in project root
+                local root = vim.fn.findfile('deno.json', '.;')
+                if root ~= '' then
+                    return 'deno'
+                end
+            end,
+        },
+    },
+})

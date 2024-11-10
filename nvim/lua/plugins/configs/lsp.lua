@@ -100,12 +100,17 @@ local nvim_lsp = require('lspconfig')
 local function is_deno_project(path)
   return nvim_lsp.util.root_pattern("deno.json", "deno.jsonc", "import_map.json")(path)
 end
+
 nvim_lsp.denols.setup {
+  
   on_attach = on_attach,
   root_dir = is_deno_project,
+  filetypes = { "deno", "typescript", "typescriptreact", "javascript", "javascriptreact" },
   init_options = {
     enable = true,
     lint = true,
+-- config should be root / deno.json
+    config = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
     unstable = true,
     suggest = {
       imports = {
@@ -132,3 +137,24 @@ nvim_lsp.ts_ls.setup {
   end,
   single_file_support = false
 }
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+  callback = function(ev)
+    if is_deno_project(ev.file) then
+      vim.schedule(function()
+        for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = ev.buf })) do
+          if client.name == "ts_ls" then
+            client.stop()
+          end
+        end
+      end)
+    end
+  end,
+})
+vim.api.nvim_create_user_command("CheckLsp", function()
+  local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  for _, client in ipairs(clients) do
+    print(string.format("Active LSP: %s (root: %s)", client.name, client.config.root_dir or "none"))
+  end
+end, {})
