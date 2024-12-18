@@ -102,15 +102,12 @@ local function is_deno_project(path)
 end
 
 nvim_lsp.denols.setup {
-  
   on_attach = on_attach,
-  root_dir = is_deno_project,
-  filetypes = { "deno", "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc", "import_map.json"),
+  filetypes = { "deno"},
   init_options = {
     enable = true,
     lint = true,
--- config should be root / deno.json
-    config = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
     unstable = true,
     suggest = {
       imports = {
@@ -137,7 +134,20 @@ nvim_lsp.ts_ls.setup {
   end,
   single_file_support = false
 }
-
+nvim_lsp.pyright.setup {
+    on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern('pyrightconfig.json'),
+    settings = {
+        pyright = { autoImportCompletion = true },
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
+            }
+        }
+    }
+}
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
   callback = function(ev)
@@ -157,4 +167,28 @@ vim.api.nvim_create_user_command("CheckLsp", function()
   for _, client in ipairs(clients) do
     print(string.format("Active LSP: %s (root: %s)", client.name, client.config.root_dir or "none"))
   end
+end, {})
+
+vim.api.nvim_create_user_command("DenoDebug", function()
+    local fname = vim.fn.expand('%:p')
+    local is_deno = is_deno_project(fname)
+    print("Current file:", fname)
+    print("Is Deno project:", is_deno and "yes" or "no")
+    
+    -- Check for deno files
+    local deno_files = {"deno.json", "deno.jsonc", "import_map.json"}
+    for _, file in ipairs(deno_files) do
+        local check_path = vim.fn.findfile(file, ".;")
+        print(file .. " found at:", check_path ~= "" and check_path or "not found")
+    end
+    
+    -- List all active clients
+    print("\nActive LSP clients:")
+    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    for _, client in ipairs(clients) do
+        print(string.format("- %s (root: %s)", client.name, client.config.root_dir or "none"))
+    end
+    
+    -- Check filetype
+    print("\nCurrent filetype:", vim.bo.filetype)
 end, {})

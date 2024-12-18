@@ -1,0 +1,12 @@
+read:
+  - CONVENTIONS.MD
+
+no-auto-commits: true
+vim: true
+# cache-prompts: true
+# cache-keepalive-pings: 5
+# commit-prompt: true
+sonnet: true
+auto-lint: true
+# multiline: true
+watch-files: true
