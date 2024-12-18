@@ -1,3 +1,5 @@
 /nvim/plugin/
 /nvim/lazy-lock.json
 .remote
+.aider*
+.env
