@@ -57,6 +57,7 @@ require("mason-lspconfig").setup({
         "typst_lsp",
 		"cssls",
 		"tailwindcss",
+		"emmet_ls",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -87,6 +88,12 @@ cmp.setup({
 	}),
 })
 require("lspconfig").tailwindcss.setup({})
+require("lspconfig").emmet_ls.setup({
+    filetypes = { 
+        'html', 'typescriptreact', 'javascriptreact', 'css', 
+        'sass', 'scss', 'less', 'mdx'
+    },
+})
 require'lspconfig'.typst_lsp.setup{
 	settings = {
 		exportPdf = "onType", -- Choose onType, onSave or never.
@@ -192,3 +199,9 @@ vim.api.nvim_create_user_command("DenoDebug", function()
     -- Check filetype
     print("\nCurrent filetype:", vim.bo.filetype)
 end, {})
+
+-- Set filetype for MDX files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.mdx",
+    command = "set filetype=markdown.mdx"
+})
