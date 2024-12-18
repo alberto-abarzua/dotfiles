@@ -9,8 +9,11 @@ export PATH="$HOME/.local/bin:$PATH"
 autoload -Uz compinit && compinit
 
 # Deno (JS/TS)
-export DENO_INSTALL="/home/alberto/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+if [ -d "$HOME/.deno" ]; then
+    export DENO_INSTALL="$HOME/.deno"
+    export PATH="$DENO_INSTALL/bin:$PATH"
+    . "/home/alberto/.deno/env"
+fi
 
 # Variables
 export PATH="$PATH:$HOME/bin"
@@ -155,4 +158,3 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-. "/home/alberto/.deno/env"
