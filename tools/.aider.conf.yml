@@ -1,12 +1,21 @@
 read:
-  - CONVENTIONS.MD
+  - CONVENTIONS.md
 
 no-auto-commits: true
 vim: true
-# cache-prompts: true
-# cache-keepalive-pings: 5
-# commit-prompt: true
-sonnet: true
+editor: nvim
+cache-prompts: true
+cache-keepalive-pings: 5
+commit-prompt: true
+# sonnet: true
 auto-lint: true
 # multiline: true
 watch-files: true
+# architect: true
+# model: openrouter/deepseek/deepseek-r1
+# editor-model: openrouter/deepseek/deepseek-r1
+# editor-model: openrouter/anthropic/claude-3.5-sonnet
+# model: openrouter/anthropic/claude-3.5-sonnet
+# weak-model: openrouter/anthropic/claude-3.5-sonnet
+--commit-prompt: "based on the changes generate a one line commit message following conventional commit message format. Your response should be the only line in the commit message and aboslutly nothing else. Example-> feat: add new feature"
+--code-theme: "monokai"

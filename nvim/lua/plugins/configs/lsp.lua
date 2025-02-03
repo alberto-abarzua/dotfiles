@@ -54,7 +54,7 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"yamlls",
 		"jsonls",
-        "typst_lsp",
+        "tinymist",
 		"cssls",
 		"tailwindcss",
 		"emmet_ls",
@@ -94,7 +94,7 @@ require("lspconfig").emmet_ls.setup({
         'sass', 'scss', 'less', 'mdx'
     },
 })
-require'lspconfig'.typst_lsp.setup{
+require'lspconfig'.tinymist.setup{
 	settings = {
 		exportPdf = "onType", -- Choose onType, onSave or never.
         serverPath = "", -- Normally, there is no need to uncomment it.
@@ -139,7 +139,23 @@ nvim_lsp.ts_ls.setup {
     -- Default TypeScript project detection
     return nvim_lsp.util.root_pattern("package.json", "tsconfig.json")(fname)
   end,
-  single_file_support = false
+  single_file_support = false,
+  settings = {
+    typescript = {
+      preferences = {
+        importModuleSpecifier = "non-relative",
+        preferRelativeImports = false,  -- Explicitly disable relative imports
+        importModuleSpecifierEnding = "minimal" -- Minimize import paths
+      }
+    },
+    javascript = {
+      preferences = {
+        importModuleSpecifier = "non-relative",
+        preferRelativeImports = false,  -- Explicitly disable relative imports
+        importModuleSpecifierEnding = "minimal" -- Minimize import paths
+      }
+    }
+  }
 }
 nvim_lsp.pyright.setup {
     on_attach = on_attach,

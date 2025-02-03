@@ -66,6 +66,9 @@ end
 -- Attach the custom function to NvimTree
 require("nvim-tree").setup({
 	on_attach = custom_nvimtree_attach,
+	view = {
+		adaptive_size = true,
+	},
 })
 
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

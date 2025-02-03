@@ -158,3 +158,11 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+
+# Aider
+alias aider='aider --no-auto-commits'
+alias aidera='aider --architect'
+alias aidera_r1='aider --architect --model openrouter/deepseek/deepseek-r1 --editor-model openrouter/anthropic/claude-3.5-sonnet:beta'
+alias aider_sonnet='aider --model openrouter/anthropic/claude-3.5-sonnet:beta --weak-model openrouter/anthropic/claude-3.5-sonnet:beta'
+alias aidera_sonnet='aider --architect --model openrouter/anthropic/claude-3.5-sonnet:beta --editor-model openrouter/anthropic/claude-3.5-sonnet:beta'
