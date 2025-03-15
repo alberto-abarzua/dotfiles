@@ -173,6 +173,6 @@ alias aid='aider_sonnet'
 
 # Other aliases
 #
-alias shost='grep '^Host ' ~/.ssh/config'
+alias shost='grep "^Host " ~/.ssh/config'
 
 
