@@ -18,6 +18,13 @@ require("lazy").setup({
 			return require("plugins.configs.catppuccin")
 		end,
 	},
+    {
+        "sindrets/diffview.nvim",
+        lazy = false,
+        config = function()
+            return require("plugins.configs.diffview")
+        end,
+    },
 
 	{
 		"itchyny/lightline.vim",
