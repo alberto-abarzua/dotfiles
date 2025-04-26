@@ -28,7 +28,7 @@ comment.setup({
 		---Line-comment keymap
 		line = "gc",
 		---Block-comment keymap
-		block = "gb",
+		block = "gbb",
 	},
 	---LHS
 	---Enable keybindings
@@ -44,3 +44,5 @@ comment.setup({
 	---Function to call after (un)comment
 	post_hook = nil,
 })
+
+

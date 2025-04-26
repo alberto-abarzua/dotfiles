@@ -161,12 +161,15 @@ export NVM_DIR="$HOME/.config/nvm"
 
 
 # Aider
-alias aider='aider --no-auto-commits'
+alias aider='aider --no-auto-commits --map-tokens 5000'
 alias aidera='aider --architect'
 alias aidera_r1='aider --architect --model openrouter/deepseek/deepseek-r1 --editor-model openrouter/anthropic/claude-3.7-sonnet'
 alias aider_sonnet='aider --model openrouter/anthropic/claude-3.7-sonnet'
 alias aidera_sonnet='aider --architect --model openrouter/anthropic/claude-3.7-sonnet --editor-model openrouter/anthropic/claude-3.7-sonnet'
 alias aider_o3='aider --model openrouter/openai/o3-mini --reasoning-effort high --weak-model openrouter/anthropic/claude-3.7-sonnet'
+alias aider_gemini='aider --model openrouter/google/gemini-2.5-pro-preview-03-25 --weak-model openrouter/gemini-2.5-flash-preview-04-17 --edit-format diff-fenced'
+
+alias aider_o4='aider --model o4-mini '
 
 alias aid='aider_sonnet'
 

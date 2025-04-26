@@ -1,4 +1,4 @@
-- name: anthropic/claude-3-7-sonnet-20250219
+- name: openrouter/anthropic/claude-3.7-sonnet
   edit_format: diff
   weak_model_name: anthropic/claude-3-5-haiku-20241022
   use_repo_map: true
@@ -13,4 +13,5 @@
       budget_tokens: 32000 # Adjust this number
   cache_control: true
   editor_model_name: anthropic/claude-3-7-sonnet-20250219
-  editor_edit_format: editor-diff
+  editor_edit_format: diff
+

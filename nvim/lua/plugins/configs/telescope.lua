@@ -8,7 +8,7 @@ vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
 -- Map <leader>gt to grep_string with input
 vim.keymap.set("n", "<leader>gt", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+    builtin.live_grep({ default_text = vim.fn.input("Grep > ") })
 end, {})
 
 -- Map <leader>vh to help_tags
