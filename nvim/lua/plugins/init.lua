@@ -101,19 +101,48 @@ require("lazy").setup(
 
                         -- Load friendly-snippets
                         require("luasnip.loaders.from_vscode").load()
-                        -- this toally exists why am i gettting error saying module not found ai!
-                        require( vim.fn.stdpath("config") .. "/lua/snippets/all.lua")
-                        -- require("luasnip.loaders.from_lua").load({paths = vim.fn.stdpath("config") .. "lua/snippets/"})
-
-                        -- -- Our keymaps: <Tab> to expand or jump, <S-Tab> to jump backwards
-                        -- vim.keymap.set({ "i", "s" }, "<Tab>", function()
-                        --   return ls.expand_or_jumpable() and "<Plug>luasnip-expand-or-jump"
-                        --     or "<Tab>"
-                        -- end, { expr = true, silent = true })
-                        -- vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-                        --   return ls.jumpable(-1) and "<Plug>luasnip-jump-prev"
-                        --     or "<S-Tab>"
-                        --
+                        
+                        -- Load custom snippets from lua/snippets directory
+                        require("luasnip.loaders.from_lua").load({paths = vim.fn.stdpath("config") .. "/lua/snippets/"})
+                        
+                        -- Enable snippet expansion
+                        ls.setup({
+                            history = true,
+                            update_events = {"TextChanged", "TextChangedI"},
+                            enable_autosnippets = true,
+                            ext_opts = {
+                                [require("luasnip.util.types").choiceNode] = {
+                                    active = {
+                                        virt_text = {{"●", "GruvboxOrange"}}
+                                    }
+                                }
+                            }
+                        })
+                        
+                        -- Direct snippet expansion keymap
+                        vim.keymap.set({"i"}, "<C-k>", function()
+                            if ls.expand_or_jumpable() then
+                                ls.expand_or_jump()
+                            end
+                        end, {silent = true})
+                        
+                        -- Tab for snippet navigation
+                        vim.keymap.set({"i", "s"}, "<Tab>", function()
+                            if ls.expand_or_jumpable() then
+                                ls.expand_or_jump()
+                            else
+                                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+                            end
+                        end, {silent = true})
+                        
+                        -- Shift-Tab to jump backwards
+                        vim.keymap.set({"i", "s"}, "<S-Tab>", function()
+                            if ls.jumpable(-1) then
+                                ls.jump(-1)
+                            else
+                                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", false)
+                            end
+                        end, {silent = true})
                     end
                 },
                 {"rafamadriz/friendly-snippets"}

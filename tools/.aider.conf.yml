@@ -4,11 +4,11 @@ read:
 no-auto-commits: true
 vim: true
 editor: nvim
-cache-prompts: true
-cache-keepalive-pings: 5
-commit-prompt: true
+# cache-prompts: true
+# cache-keepalive-pings: 5
+# commit-prompt: true
 # sonnet: true
-auto-lint: true
+# auto-lint: true
 # multiline: true
 watch-files: true
 # architect: true

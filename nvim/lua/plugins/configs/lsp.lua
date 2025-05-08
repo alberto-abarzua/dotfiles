@@ -185,6 +185,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
 vim.api.nvim_create_user_command("CheckLsp", function()
   local clients = vim.lsp.get_active_clients({ bufnr = 0 })
   for _, client in ipairs(clients) do

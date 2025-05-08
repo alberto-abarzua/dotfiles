@@ -1,7 +1,5 @@
 -- disable netrw
 vim.defer_fn(function()
-    -- console log something for test   
-    print("Hello from settings.lua")
     
     vim.g.loaded_netrwPlugin = 1
     vim.g.loaded_netrw = 1
