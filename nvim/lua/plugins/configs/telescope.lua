@@ -8,7 +8,7 @@ vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
 -- Map <leader>gt to grep_string with input
 vim.keymap.set("n", "<leader>gt", function()
-    builtin.live_grep({ default_text = vim.fn.input("Grep > ") })
+	builtin.live_grep({ default_text = vim.fn.input("Grep > ") })
 end, {})
 
 -- Map <leader>vh to help_tags
@@ -22,3 +22,8 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true }
 )
 
+vim.keymap.set("n", "<leader>rr", function()
+	require("telescope.builtin").lsp_workspace_symbols({
+		query = vim.fn.input("Workspace Symbol > "),
+	})
+end, { noremap = true, silent = true })
