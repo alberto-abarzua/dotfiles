@@ -76,13 +76,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.keymap.set("n", "<C-Space>", "<C-x><C-o>", opts)
 		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-		vim.keymap.set("n", "gdl", function()
+		vim.keymap.set("n", "gld", function()
 			vim.cmd("vsplit") -- open a new vertical split and switch to it
 			vim.lsp.buf.definition() -- jump to the definition in that split
 		end, opts)
 		vim.keymap.set({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+		-- vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
 		-- show references
 		vim.keymap.set("n", "grr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
 
